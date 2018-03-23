@@ -13,6 +13,10 @@ export function SearchDoctors() {
     },
     success: function(response) {
       console.log(response);
+      if (response.data.length === 0) {
+        $("ul#result-list").append("<li>Please try a different earch term</li>")
+      }
+
       for (var i = 0; i < response.data.length; i++) {
         let title;
         if (response.data[i].profile.title === undefined) {
@@ -31,14 +35,32 @@ export function SearchDoctors() {
           websiteString = '<br>Website: <a href="' + response.data[i].practices[0].website + '">' + response.data[i].practices[0].website + "</a>";
         }
 
-        $("ul#result-list").append(nameString + addressString + phoneString + websiteString + "<hr></li>");
+        let patientsString;
+        if (response.data[i].practices[0].accepts_new_patients === false) {
+          patientsString = "<br>Not Accepting New Patients";
+        } else {
+          patientsString = "<br>Accepting New Patients";
+        }
+
+        $("ul#result-list").append(nameString + addressString + phoneString + websiteString + patientsString + "<hr></li>");
       }
 
       $('#number-of-results').text("Your Search Returned " + response.meta.count + " Results")
 
     },
-    error: function() {
-      $('#errors').text("There was an error. Please try again.")
+    error: function(xhr) {
+      if (xhr.status === 400) {
+        $('#errors').text("Error 400: Bad Request")
+      } else if (xhr.status === 401) {
+        $('#errors').text("Error 401: Unauthorized")
+      } else if (xhr.status === 403) {
+        $('#errors').text("Error 403: Forbidden")
+      } else if (xhr.status === 404) {
+        $('#errors').text("Error 404: Not Found")
+      } else {
+        $('#errors').text("Error " + xhr.status)
+      }
+
     }
   });
 }
