@@ -20,7 +20,18 @@ export function SearchDoctors() {
         } else {
           title = ", " + response.data[i].profile.title;
         }
-        $("ul#result-list").append("<li>Name: " + response.data[i].profile.first_name + " " + response.data[i].profile.last_name + title + "<hr></li>");
+
+        let nameString = "<li>Name: " + response.data[i].profile.first_name + " " + response.data[i].profile.last_name + title;
+        let addressString = "<br>Address: " + response.data[i].practices[0].visit_address.street + ", " +  response.data[i].practices[0].visit_address.city + ", " + response.data[i].practices[0].visit_address.state;
+        let phoneString = "<br>Phone: " + response.data[i].practices[0].phones[0].number
+        let websiteString;
+        if (response.data[i].practices[0].website === undefined) {
+          websiteString = "";
+        } else {
+          websiteString = '<br>Website: <a href="' + response.data[i].practices[0].website + '">' + response.data[i].practices[0].website + "</a>";
+        }
+
+        $("ul#result-list").append(nameString + addressString + phoneString + websiteString + "<hr></li>");
       }
 
       $('#number-of-results').text("Your Search Returned " + response.meta.count + " Results")
