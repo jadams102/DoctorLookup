@@ -2,6 +2,7 @@ import $ from 'jquery';
 const apiKey = process.env.exports.apiKey;
 
 
+
 export function SearchDoctors() {
   let searchType = $('#search-type').val();
   let searchTerm = $('#search-term').val();
