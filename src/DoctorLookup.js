@@ -24,8 +24,8 @@ export function SearchDoctors() {
         } else {
           title = ", " + response.data[i].profile.title;
         }
-
-        let nameString = "<li>Name: " + response.data[i].profile.first_name + " " + response.data[i].profile.last_name + title;
+        let imgUrlString = '<li><img src="' + response.data[i].profile.image_url + '">'
+        let nameString = "<br>Name: " + response.data[i].profile.first_name + " " + response.data[i].profile.last_name + title;
         let addressString = "<br>Address: " + response.data[i].practices[0].visit_address.street + ", " +  response.data[i].practices[0].visit_address.city + ", " + response.data[i].practices[0].visit_address.state;
         let phoneString = "<br>Phone: " + response.data[i].practices[0].phones[0].number
         let websiteString;
@@ -42,7 +42,7 @@ export function SearchDoctors() {
           patientsString = "<br>Accepting New Patients";
         }
 
-        $("ul#result-list").append(nameString + addressString + phoneString + websiteString + patientsString + "<hr></li>");
+        $("ul#result-list").append(imgUrlString + nameString + addressString + phoneString + websiteString + patientsString + "<hr></li>");
       }
 
       $('#number-of-results').text("Your Search Returned " + response.meta.count + " Results")
