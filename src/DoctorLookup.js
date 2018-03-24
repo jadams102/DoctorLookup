@@ -18,11 +18,9 @@ $.ajax({
     format: 'json'
   },
   success: function(latlon) {
-    console.log(latlon)
     let lat = latlon.results[0].geometry.location.lat;
     let lon = latlon.results[0].geometry.location.lng;
-    let location = lat + ',' + lon
-    console.log(lat)
+    let location = "location=" + lat.toFixed(3) + ',' + lon.toFixed(3) + "," + "30";
 
     $.ajax({
       url: "https://api.betterdoctor.com/2016-03-01/doctors?" + searchType + "=" + searchTerm + "&" + location + "&skip=0&limit=10&user_key=" + apiKey,
