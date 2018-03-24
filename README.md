@@ -1,12 +1,12 @@
 # Doctor Lookup
 
-#### An app that allows the user to search for doctors in the Portland area.
+#### An app that allows the user to search for doctors in a specified area.
 
 #### By **Joel Adams**
 
 ## Description
 
-This app allows a user to search for health care practices in the Portland area. The user can search by the name of the doctor, or by the medical condition they are seeking treatment for.
+This app allows a user to search for health care practices near a user defined area. The user can search by the name of the doctor, or by the medical condition they are seeking treatment for.
 *GitHub repo:* https://github.com/joelaphoto/DoctorLookup
 
 ### Specs
