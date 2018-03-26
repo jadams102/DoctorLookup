@@ -1,7 +1,6 @@
 import $ from 'jquery';
 let apiKey = process.env.exports.apiKey;
-// let mapsApiKey = process.env.exports.mapsApiKey;
-let mapsApiKey = 'AIzaSyCHCAzr_3w1ap2Exuot_-7mtgvmcDJ-UAs'
+let mapsApiKey = process.env.exports.mapsApiKey;
 
 export function SearchDoctors() {
   let city = $('#city').val();
