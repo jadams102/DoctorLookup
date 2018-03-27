@@ -54,6 +54,12 @@ let displayDoctors = function(response){
 
 $(document).ready(function(){
   $('#user-form').submit(function(event){
+    let city = $('#city').val();
+    let state = $('#state').val();
+    let address = $('#address').val();
+    let addressString = (address + ",+" + city + ",+" + state).replace(/ /g,"+");
+    let searchType = $('#search-type').val();
+    let searchTerm = $('#search-term').val();
     $('ul#result-list').empty();
     SearchDoctors(displayDoctors, errorDisplay)
     event.preventDefault();

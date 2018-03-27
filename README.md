@@ -21,6 +21,7 @@ This app allows a user to search for health care practices near a user defined a
 Requires Node.js
 
 1. Download or clone Github respository.
+2. Create a file titled .env in the DoctorLookup directory and add exports.apiKey = [BetterDoctor API KEY GOES HERE] and exports.mapsApiKey = [Google Geocoding API KEY GOES HERE]
 2. Run $ npm install in command line, terminal, or GitBash.
 3. Run $ npm run build in command line, terminal, or GitBash.
 4. Run $ npm run start in command line, terminal, or GitBash, program will open in browser window.

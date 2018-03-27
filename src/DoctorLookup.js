@@ -3,12 +3,7 @@ let apiKey = process.env.exports.apiKey;
 let mapsApiKey = process.env.exports.mapsApiKey;
 
 export function SearchDoctors(displayDoctors, errorDisplay) {
-  let city = $('#city').val();
-  let state = $('#state').val();
-  let address = $('#address').val();
-  let addressString = (address + ",+" + city + ",+" + state).replace(/ /g,"+");
-  let searchType = $('#search-type').val();
-  let searchTerm = $('#search-term').val();
+
 $.ajax({
   url: "https://maps.googleapis.com/maps/api/geocode/json?address="+ addressString + "&key=" + mapsApiKey,
   type: 'GET',
